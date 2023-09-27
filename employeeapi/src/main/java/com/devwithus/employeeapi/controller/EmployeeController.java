@@ -14,12 +14,12 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping
+    @GetMapping("/")
     List<Employee> getAll() {
         return this.employeeService.findAll();
     }
     @GetMapping(value = "/{id}")
-    Optional<Employee> getById(@PathVariable int id) {
+    Employee getById(@PathVariable int id) {
         return this.employeeService.findById(id);
     }
     @PostMapping
