@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith({MockitoExtension.class, SpringExtension.class})
@@ -51,18 +52,18 @@ public class EmployeeRepositoryUnitTest {
         assertTrue(employee.isPresent());
     }
 
-//    @Test
-//    void save_should_insert_new_employee() {
-//        // Given
-//        Employee newEmployee = new Employee();
-//        newEmployee.setFirstName("FIRST_NAME");
-//        newEmployee.setLastName("LAST_NAME");
-//        // When
-//        Employee persistedEmployee = this.employeeRepository.save(newEmployee);
-//        // Then
-//        assertNotNull(persistedEmployee);
-//        assertEquals(5, persistedEmployee.getId());
-//    }
+    @Test
+    void save_should_insert_new_employee() {
+        // Given
+        Employee newEmployee = new Employee();
+        newEmployee.setFirstName("FIRST_NAME");
+        newEmployee.setLastName("LAST_NAME");
+        // When
+        Employee persistedEmployee = this.employeeRepository.save(newEmployee);
+        // Then
+        assertNotNull(persistedEmployee);
+        assertThat(persistedEmployee.getId()).isGreaterThan(0);
+    }
     @Test
     void save_should_update_existing_employee(){
         //Given
